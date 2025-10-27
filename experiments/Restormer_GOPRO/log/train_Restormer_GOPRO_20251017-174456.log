@@ -1,0 +1,513 @@
+2025-10-17 17:44:56,040 - INFO - Training options:
+{'name': 'Restormer_GOPRO', 'phase': 'train', 'scale': 1, 'manual_seed': 100, 'world_size': 1, 'rank': 0, 'datasets': {'train': {'name': 'GOPRO_train', 'dataroot_gt': '/mnt/DATA/EE22B013/Btech_project/Model/patches/gopro/train/sharp', 'dataroot_lq': '/mnt/DATA/EE22B013/Btech_project/Model/patches/gopro/train/blurred', 'gt_size': 256, 'batch_size_per_gpu': 16, 'prefetch_mode': 'cuda', 'io_backend': {'type': 'disk'}, 'geometric_augs': True, 'dataset_enlarge_ratio': 1, 'iters': [92000, 64000, 48000, 36000, 36000, 24000], 'mini_batch_sizes': [4, 3, 2, 1, 1, 1], 'gt_sizes': [128, 160, 192, 224, 256, 256]}, 'val': {'name': 'GOPRO_val', 'dataroot_gt': '/mnt/DATA/EE22B013/Btech_project/Model/patches/gopro/val/sharp', 'dataroot_lq': '/mnt/DATA/EE22B013/Btech_project/Model/patches/gopro/val/blurred', 'prefetch_mode': 'cpu', 'use_image': True, 'save_img': True, 'rgb2bgr': True}}, 'network_g': {'inp_channels': 3, 'out_channels': 3, 'dim': 48, 'num_blocks': [4, 6, 6, 8], 'num_refinement_blocks': 4, 'heads': [1, 2, 4, 8], 'ffn_expansion_factor': 2.66, 'bias': False, 'LayerNorm_type': 'WithBias', 'dual_pixel_task': False}, 'train': {'total_iter': 300000, 'warmup_iter': -1, 'use_grad_clip': True, 'scheduler': {'type': 'CosineAnnealingRestartCyclicLR', 'periods': [92000, 208000], 'restart_weights': [1, 1], 'eta_mins': [0.0003, 1e-06]}, 'mixing_augs': {'mixup': False, 'mixup_beta': 1.2, 'use_identity': True}, 'optim_g': {'type': 'AdamW', 'lr': 0.0003, 'weight_decay': 0.0001, 'betas': [0.9, 0.999]}, 'pixel_opt': {'type': 'L1Loss', 'loss_weight': 1, 'reduction': 'mean'}}, 'val': {'window_size': 8, 'val_freq': 4000.0, 'save_img': False, 'rgb2bgr': True, 'use_image': True, 'max_minibatch': 8, 'metrics': {'psnr': {'type': 'calculate_psnr', 'crop_border': 0, 'test_y_channel': False}}}, 'logger': {'use_tb_logger': True, 'wandb': {'project': 'Restormer_GOPRO'}, 'print_freq': 1000, 'save_checkpoint_freq': 4000.0}, 'path': {'root': 'experiments', 'log': 'experiments/Restormer_GOPRO/log', 'models': 'experiments/Restormer_GOPRO/models', 'resume_state': None}, 'num_gpu': 1, 'dist': False}
+2025-10-17 17:44:57,383 - INFO - Training Dataset: 16824 images
+Dataset enlarge ratio: 1
+Batch size per GPU: 16
+World size (GPU number): 1
+Iters per epoch: 1052
+Total epochs: 286, Total iters: 300000
+2025-10-17 17:44:57,386 - INFO - Validation Dataset: 1111 images
+2025-10-17 17:44:58,684 - INFO - 
+Updating Patch_Size to 128 and Batch_Size to 4
+
+2025-10-17 17:55:59,114 - INFO - [Epoch 0][Iter 1000] LR: 0.00030000, Train Loss: 0.027627, Val Loss: 0.038480
+2025-10-17 18:06:59,041 - INFO - [Epoch 1][Iter 2000] LR: 0.00030000, Train Loss: 0.023690, Val Loss: 0.037558
+2025-10-17 18:17:59,489 - INFO - [Epoch 2][Iter 3000] LR: 0.00030000, Train Loss: 0.015326, Val Loss: 0.037269
+2025-10-17 18:28:59,862 - INFO - [Epoch 3][Iter 4000] LR: 0.00030000, Train Loss: 0.029912, Val Loss: 0.037503
+2025-10-17 18:28:59,862 - INFO - Saving checkpoint...
+2025-10-17 18:31:43,925 - INFO - [Iter 4000] Val Loss: 0.037503, PSNR: 25.39, SSIM: 0.7592
+2025-10-17 18:42:45,021 - INFO - [Epoch 4][Iter 5000] LR: 0.00030000, Train Loss: 0.041893, Val Loss: 0.035761
+2025-10-17 18:53:46,115 - INFO - [Epoch 5][Iter 6000] LR: 0.00030000, Train Loss: 0.013556, Val Loss: 0.034797
+2025-10-17 19:04:47,253 - INFO - [Epoch 6][Iter 7000] LR: 0.00030000, Train Loss: 0.017480, Val Loss: 0.034798
+2025-10-17 19:15:48,132 - INFO - [Epoch 7][Iter 8000] LR: 0.00030000, Train Loss: 0.040581, Val Loss: 0.034439
+2025-10-17 19:15:48,132 - INFO - Saving checkpoint...
+2025-10-17 19:18:31,889 - INFO - [Iter 8000] Val Loss: 0.034439, PSNR: 25.88, SSIM: 0.7797
+2025-10-17 19:29:32,449 - INFO - [Epoch 8][Iter 9000] LR: 0.00030000, Train Loss: 0.021811, Val Loss: 0.033466
+2025-10-17 19:40:32,289 - INFO - [Epoch 9][Iter 10000] LR: 0.00030000, Train Loss: 0.047400, Val Loss: 0.032704
+2025-10-17 19:51:31,957 - INFO - [Epoch 10][Iter 11000] LR: 0.00030000, Train Loss: 0.022394, Val Loss: 0.032330
+2025-10-17 20:02:31,762 - INFO - [Epoch 11][Iter 12000] LR: 0.00030000, Train Loss: 0.025742, Val Loss: 0.032105
+2025-10-17 20:02:31,762 - INFO - Saving checkpoint...
+2025-10-17 20:05:15,244 - INFO - [Iter 12000] Val Loss: 0.032105, PSNR: 26.54, SSIM: 0.7988
+2025-10-17 20:16:15,616 - INFO - [Epoch 12][Iter 13000] LR: 0.00030000, Train Loss: 0.028543, Val Loss: 0.031646
+2025-10-17 20:27:15,490 - INFO - [Epoch 13][Iter 14000] LR: 0.00030000, Train Loss: 0.015060, Val Loss: 0.031274
+2025-10-17 20:38:15,205 - INFO - [Epoch 14][Iter 15000] LR: 0.00030000, Train Loss: 0.041046, Val Loss: 0.030730
+2025-10-17 20:49:15,254 - INFO - [Epoch 15][Iter 16000] LR: 0.00030000, Train Loss: 0.019425, Val Loss: 0.029828
+2025-10-17 20:49:15,255 - INFO - Saving checkpoint...
+2025-10-17 20:51:58,724 - INFO - [Iter 16000] Val Loss: 0.029828, PSNR: 27.07, SSIM: 0.8166
+2025-10-17 21:02:59,294 - INFO - [Epoch 16][Iter 17000] LR: 0.00030000, Train Loss: 0.014747, Val Loss: 0.029412
+2025-10-17 21:13:59,757 - INFO - [Epoch 17][Iter 18000] LR: 0.00030000, Train Loss: 0.029645, Val Loss: 0.029631
+2025-10-17 21:25:00,073 - INFO - [Epoch 18][Iter 19000] LR: 0.00030000, Train Loss: 0.041251, Val Loss: 0.029684
+2025-10-17 21:36:00,309 - INFO - [Epoch 19][Iter 20000] LR: 0.00030000, Train Loss: 0.008311, Val Loss: 0.028249
+2025-10-17 21:36:00,309 - INFO - Saving checkpoint...
+2025-10-17 21:38:44,138 - INFO - [Iter 20000] Val Loss: 0.028249, PSNR: 27.55, SSIM: 0.8301
+2025-10-17 21:49:44,879 - INFO - [Epoch 19][Iter 21000] LR: 0.00030000, Train Loss: 0.046912, Val Loss: 0.028671
+2025-10-17 22:00:45,282 - INFO - [Epoch 20][Iter 22000] LR: 0.00030000, Train Loss: 0.037378, Val Loss: 0.027446
+2025-10-17 22:11:45,914 - INFO - [Epoch 21][Iter 23000] LR: 0.00030000, Train Loss: 0.013844, Val Loss: 0.026645
+2025-10-17 22:22:46,513 - INFO - [Epoch 22][Iter 24000] LR: 0.00030000, Train Loss: 0.026865, Val Loss: 0.026603
+2025-10-17 22:22:46,514 - INFO - Saving checkpoint...
+2025-10-17 22:25:30,180 - INFO - [Iter 24000] Val Loss: 0.026603, PSNR: 28.10, SSIM: 0.8458
+2025-10-17 22:36:31,150 - INFO - [Epoch 23][Iter 25000] LR: 0.00030000, Train Loss: 0.019854, Val Loss: 0.026807
+2025-10-17 22:47:31,659 - INFO - [Epoch 24][Iter 26000] LR: 0.00030000, Train Loss: 0.029697, Val Loss: 0.027180
+2025-10-17 22:58:32,240 - INFO - [Epoch 25][Iter 27000] LR: 0.00030000, Train Loss: 0.049441, Val Loss: 0.026610
+2025-10-17 23:09:32,962 - INFO - [Epoch 26][Iter 28000] LR: 0.00030000, Train Loss: 0.013584, Val Loss: 0.027349
+2025-10-17 23:09:32,962 - INFO - Saving checkpoint...
+2025-10-17 23:12:17,150 - INFO - [Iter 28000] Val Loss: 0.027349, PSNR: 27.87, SSIM: 0.8391
+2025-10-17 23:23:18,272 - INFO - [Epoch 27][Iter 29000] LR: 0.00030000, Train Loss: 0.038025, Val Loss: 0.026803
+2025-10-17 23:34:19,123 - INFO - [Epoch 28][Iter 30000] LR: 0.00030000, Train Loss: 0.008652, Val Loss: 0.026070
+2025-10-17 23:45:19,886 - INFO - [Epoch 29][Iter 31000] LR: 0.00030000, Train Loss: 0.015531, Val Loss: 0.026957
+2025-10-17 23:56:20,587 - INFO - [Epoch 30][Iter 32000] LR: 0.00030000, Train Loss: 0.013588, Val Loss: 0.026338
+2025-10-17 23:56:20,588 - INFO - Saving checkpoint...
+2025-10-17 23:59:04,440 - INFO - [Iter 32000] Val Loss: 0.026338, PSNR: 28.26, SSIM: 0.8483
+2025-10-18 00:10:05,730 - INFO - [Epoch 31][Iter 33000] LR: 0.00030000, Train Loss: 0.020448, Val Loss: 0.024936
+2025-10-18 00:21:06,366 - INFO - [Epoch 32][Iter 34000] LR: 0.00030000, Train Loss: 0.014487, Val Loss: 0.026194
+2025-10-18 00:32:07,170 - INFO - [Epoch 33][Iter 35000] LR: 0.00030000, Train Loss: 0.020700, Val Loss: 0.026388
+2025-10-18 00:43:07,767 - INFO - [Epoch 34][Iter 36000] LR: 0.00030000, Train Loss: 0.084717, Val Loss: 0.026436
+2025-10-18 00:43:07,767 - INFO - Saving checkpoint...
+2025-10-18 00:45:51,792 - INFO - [Iter 36000] Val Loss: 0.026436, PSNR: 28.16, SSIM: 0.8468
+2025-10-18 00:56:52,722 - INFO - [Epoch 35][Iter 37000] LR: 0.00030000, Train Loss: 0.012846, Val Loss: 0.025513
+2025-10-18 01:07:53,293 - INFO - [Epoch 36][Iter 38000] LR: 0.00030000, Train Loss: 0.022179, Val Loss: 0.025933
+2025-10-18 01:18:53,792 - INFO - [Epoch 37][Iter 39000] LR: 0.00030000, Train Loss: 0.031956, Val Loss: 0.025756
+2025-10-18 01:29:54,206 - INFO - [Epoch 38][Iter 40000] LR: 0.00030000, Train Loss: 0.014861, Val Loss: 0.025752
+2025-10-18 01:29:54,206 - INFO - Saving checkpoint...
+2025-10-18 01:32:38,150 - INFO - [Iter 40000] Val Loss: 0.025752, PSNR: 28.25, SSIM: 0.8554
+2025-10-18 01:43:38,787 - INFO - [Epoch 39][Iter 41000] LR: 0.00030000, Train Loss: 0.009463, Val Loss: 0.026253
+2025-10-18 01:54:38,628 - INFO - [Epoch 39][Iter 42000] LR: 0.00030000, Train Loss: 0.020277, Val Loss: 0.025104
+2025-10-18 02:05:38,789 - INFO - [Epoch 40][Iter 43000] LR: 0.00030000, Train Loss: 0.009086, Val Loss: 0.025128
+2025-10-18 02:16:39,024 - INFO - [Epoch 41][Iter 44000] LR: 0.00030000, Train Loss: 0.016260, Val Loss: 0.024659
+2025-10-18 02:16:39,024 - INFO - Saving checkpoint...
+2025-10-18 02:19:22,851 - INFO - [Iter 44000] Val Loss: 0.024659, PSNR: 28.72, SSIM: 0.8626
+2025-10-18 02:30:23,729 - INFO - [Epoch 42][Iter 45000] LR: 0.00030000, Train Loss: 0.024651, Val Loss: 0.024587
+2025-10-18 02:41:23,956 - INFO - [Epoch 43][Iter 46000] LR: 0.00030000, Train Loss: 0.015455, Val Loss: 0.024346
+2025-10-18 02:52:24,154 - INFO - [Epoch 44][Iter 47000] LR: 0.00030000, Train Loss: 0.028971, Val Loss: 0.024839
+2025-10-18 03:03:24,409 - INFO - [Epoch 45][Iter 48000] LR: 0.00030000, Train Loss: 0.013483, Val Loss: 0.024614
+2025-10-18 03:03:24,409 - INFO - Saving checkpoint...
+2025-10-18 03:06:08,462 - INFO - [Iter 48000] Val Loss: 0.024614, PSNR: 28.69, SSIM: 0.8621
+2025-10-18 03:17:09,019 - INFO - [Epoch 46][Iter 49000] LR: 0.00030000, Train Loss: 0.009467, Val Loss: 0.025037
+2025-10-18 03:28:09,253 - INFO - [Epoch 47][Iter 50000] LR: 0.00030000, Train Loss: 0.010713, Val Loss: 0.024687
+2025-10-18 03:39:09,403 - INFO - [Epoch 48][Iter 51000] LR: 0.00030000, Train Loss: 0.017582, Val Loss: 0.023798
+2025-10-18 03:50:09,669 - INFO - [Epoch 49][Iter 52000] LR: 0.00030000, Train Loss: 0.034232, Val Loss: 0.024116
+2025-10-18 03:50:09,669 - INFO - Saving checkpoint...
+2025-10-18 03:52:53,049 - INFO - [Iter 52000] Val Loss: 0.024116, PSNR: 28.87, SSIM: 0.8666
+2025-10-18 04:03:53,640 - INFO - [Epoch 50][Iter 53000] LR: 0.00030000, Train Loss: 0.039681, Val Loss: 0.024322
+2025-10-18 04:14:53,758 - INFO - [Epoch 51][Iter 54000] LR: 0.00030000, Train Loss: 0.028277, Val Loss: 0.023451
+2025-10-18 04:25:53,568 - INFO - [Epoch 52][Iter 55000] LR: 0.00030000, Train Loss: 0.022940, Val Loss: 0.024545
+2025-10-18 04:36:53,461 - INFO - [Epoch 53][Iter 56000] LR: 0.00030000, Train Loss: 0.050331, Val Loss: 0.024119
+2025-10-18 04:36:53,461 - INFO - Saving checkpoint...
+2025-10-18 04:39:37,144 - INFO - [Iter 56000] Val Loss: 0.024119, PSNR: 28.95, SSIM: 0.8691
+2025-10-18 04:50:37,532 - INFO - [Epoch 54][Iter 57000] LR: 0.00030000, Train Loss: 0.009431, Val Loss: 0.024565
+2025-10-18 05:01:37,508 - INFO - [Epoch 55][Iter 58000] LR: 0.00030000, Train Loss: 0.023893, Val Loss: 0.023881
+2025-10-18 05:12:37,427 - INFO - [Epoch 56][Iter 59000] LR: 0.00030000, Train Loss: 0.041639, Val Loss: 0.024625
+2025-10-18 05:23:37,381 - INFO - [Epoch 57][Iter 60000] LR: 0.00030000, Train Loss: 0.017983, Val Loss: 0.024091
+2025-10-18 05:23:37,381 - INFO - Saving checkpoint...
+2025-10-18 05:26:21,218 - INFO - [Iter 60000] Val Loss: 0.024091, PSNR: 28.92, SSIM: 0.8686
+2025-10-18 05:37:21,633 - INFO - [Epoch 58][Iter 61000] LR: 0.00030000, Train Loss: 0.017891, Val Loss: 0.023062
+2025-10-18 05:48:21,327 - INFO - [Epoch 58][Iter 62000] LR: 0.00030000, Train Loss: 0.011699, Val Loss: 0.023900
+2025-10-18 05:59:21,553 - INFO - [Epoch 59][Iter 63000] LR: 0.00030000, Train Loss: 0.031569, Val Loss: 0.024062
+2025-10-18 06:10:21,650 - INFO - [Epoch 60][Iter 64000] LR: 0.00030000, Train Loss: 0.015081, Val Loss: 0.023126
+2025-10-18 06:10:21,650 - INFO - Saving checkpoint...
+2025-10-18 06:13:04,888 - INFO - [Iter 64000] Val Loss: 0.023126, PSNR: 29.27, SSIM: 0.8747
+2025-10-18 06:24:05,473 - INFO - [Epoch 61][Iter 65000] LR: 0.00030000, Train Loss: 0.018822, Val Loss: 0.024619
+2025-10-18 06:35:05,777 - INFO - [Epoch 62][Iter 66000] LR: 0.00030000, Train Loss: 0.008836, Val Loss: 0.023373
+2025-10-18 06:46:05,279 - INFO - [Epoch 63][Iter 67000] LR: 0.00030000, Train Loss: 0.020035, Val Loss: 0.023316
+2025-10-18 06:57:04,767 - INFO - [Epoch 64][Iter 68000] LR: 0.00030000, Train Loss: 0.028093, Val Loss: 0.023845
+2025-10-18 06:57:04,767 - INFO - Saving checkpoint...
+2025-10-18 06:59:47,602 - INFO - [Iter 68000] Val Loss: 0.023845, PSNR: 28.96, SSIM: 0.8703
+2025-10-18 07:10:47,500 - INFO - [Epoch 65][Iter 69000] LR: 0.00030000, Train Loss: 0.013973, Val Loss: 0.023256
+2025-10-18 07:21:46,736 - INFO - [Epoch 66][Iter 70000] LR: 0.00030000, Train Loss: 0.029511, Val Loss: 0.023422
+2025-10-18 07:32:45,577 - INFO - [Epoch 67][Iter 71000] LR: 0.00030000, Train Loss: 0.011578, Val Loss: 0.023507
+2025-10-18 07:43:44,039 - INFO - [Epoch 68][Iter 72000] LR: 0.00030000, Train Loss: 0.027796, Val Loss: 0.023107
+2025-10-18 07:43:44,040 - INFO - Saving checkpoint...
+2025-10-18 07:46:26,636 - INFO - [Iter 72000] Val Loss: 0.023107, PSNR: 29.27, SSIM: 0.8760
+2025-10-18 07:57:25,411 - INFO - [Epoch 69][Iter 73000] LR: 0.00030000, Train Loss: 0.020257, Val Loss: 0.023460
+2025-10-18 08:08:23,656 - INFO - [Epoch 70][Iter 74000] LR: 0.00030000, Train Loss: 0.018477, Val Loss: 0.022912
+2025-10-18 08:19:21,830 - INFO - [Epoch 71][Iter 75000] LR: 0.00030000, Train Loss: 0.010907, Val Loss: 0.023566
+2025-10-18 08:30:20,073 - INFO - [Epoch 72][Iter 76000] LR: 0.00030000, Train Loss: 0.038456, Val Loss: 0.024574
+2025-10-18 08:30:20,073 - INFO - Saving checkpoint...
+2025-10-18 08:33:02,510 - INFO - [Iter 76000] Val Loss: 0.024574, PSNR: 28.75, SSIM: 0.8685
+2025-10-18 08:44:01,408 - INFO - [Epoch 73][Iter 77000] LR: 0.00030000, Train Loss: 0.029931, Val Loss: 0.022816
+2025-10-18 08:54:59,224 - INFO - [Epoch 74][Iter 78000] LR: 0.00030000, Train Loss: 0.011087, Val Loss: 0.022818
+2025-10-18 09:05:57,300 - INFO - [Epoch 75][Iter 79000] LR: 0.00030000, Train Loss: 0.039080, Val Loss: 0.023149
+2025-10-18 09:16:56,080 - INFO - [Epoch 76][Iter 80000] LR: 0.00030000, Train Loss: 0.053656, Val Loss: 0.023634
+2025-10-18 09:16:56,081 - INFO - Saving checkpoint...
+2025-10-18 09:19:38,382 - INFO - [Iter 80000] Val Loss: 0.023634, PSNR: 29.07, SSIM: 0.8702
+2025-10-18 09:30:37,095 - INFO - [Epoch 77][Iter 81000] LR: 0.00030000, Train Loss: 0.024674, Val Loss: 0.023409
+2025-10-18 09:41:35,407 - INFO - [Epoch 78][Iter 82000] LR: 0.00030000, Train Loss: 0.012886, Val Loss: 0.023179
+2025-10-18 09:52:33,728 - INFO - [Epoch 78][Iter 83000] LR: 0.00030000, Train Loss: 0.025874, Val Loss: 0.023712
+2025-10-18 10:03:32,429 - INFO - [Epoch 79][Iter 84000] LR: 0.00030000, Train Loss: 0.014666, Val Loss: 0.022480
+2025-10-18 10:03:32,429 - INFO - Saving checkpoint...
+2025-10-18 10:06:15,301 - INFO - [Iter 84000] Val Loss: 0.022480, PSNR: 29.55, SSIM: 0.8814
+2025-10-18 10:17:14,397 - INFO - [Epoch 80][Iter 85000] LR: 0.00030000, Train Loss: 0.022322, Val Loss: 0.023593
+2025-10-18 10:28:13,549 - INFO - [Epoch 81][Iter 86000] LR: 0.00030000, Train Loss: 0.020929, Val Loss: 0.022392
+2025-10-18 10:39:12,482 - INFO - [Epoch 82][Iter 87000] LR: 0.00030000, Train Loss: 0.013389, Val Loss: 0.022106
+2025-10-18 10:50:11,681 - INFO - [Epoch 83][Iter 88000] LR: 0.00030000, Train Loss: 0.014637, Val Loss: 0.022602
+2025-10-18 10:50:11,681 - INFO - Saving checkpoint...
+2025-10-18 10:52:54,166 - INFO - [Iter 88000] Val Loss: 0.022602, PSNR: 29.46, SSIM: 0.8792
+2025-10-18 11:03:53,620 - INFO - [Epoch 84][Iter 89000] LR: 0.00030000, Train Loss: 0.011309, Val Loss: 0.023076
+2025-10-18 11:14:52,469 - INFO - [Epoch 85][Iter 90000] LR: 0.00030000, Train Loss: 0.027488, Val Loss: 0.023250
+2025-10-18 11:25:51,270 - INFO - [Epoch 86][Iter 91000] LR: 0.00030000, Train Loss: 0.006388, Val Loss: 0.022587
+2025-10-18 11:34:12,059 - INFO - Training Dataset: 16824 images
+Dataset enlarge ratio: 1
+Batch size per GPU: 3
+World size (GPU number): 1
+Iters per epoch: 5608
+Total epochs: 54, Total iters: 300000
+2025-10-18 11:34:12,062 - INFO - Validation Dataset: 1111 images
+2025-10-18 11:36:50,002 - INFO - [Epoch 87][Iter 92000] LR: 0.00030000, Train Loss: 0.029946, Val Loss: 0.022580
+2025-10-18 11:36:50,002 - INFO - Saving checkpoint...
+2025-10-18 11:39:32,652 - INFO - [Iter 92000] Val Loss: 0.022580, PSNR: 29.42, SSIM: 0.8801
+2025-10-18 11:39:32,933 - INFO - 
+Updating Patch_Size to 160 and Batch_Size to 3
+
+2025-10-18 11:52:31,122 - INFO - [Epoch 87][Iter 93000] LR: 0.00029998, Train Loss: 0.007478, Val Loss: 0.022337
+2025-10-18 12:05:26,328 - INFO - [Epoch 87][Iter 94000] LR: 0.00029993, Train Loss: 0.016512, Val Loss: 0.022182
+2025-10-18 12:18:21,604 - INFO - [Epoch 87][Iter 95000] LR: 0.00029985, Train Loss: 0.009620, Val Loss: 0.023286
+2025-10-18 12:31:16,845 - INFO - [Epoch 87][Iter 96000] LR: 0.00029973, Train Loss: 0.033311, Val Loss: 0.022431
+2025-10-18 12:31:16,845 - INFO - Saving checkpoint...
+2025-10-18 12:33:59,612 - INFO - [Iter 96000] Val Loss: 0.022431, PSNR: 29.54, SSIM: 0.8807
+2025-10-18 12:46:55,592 - INFO - [Epoch 87][Iter 97000] LR: 0.00029957, Train Loss: 0.015350, Val Loss: 0.022329
+2025-10-18 12:59:51,412 - INFO - [Epoch 88][Iter 98000] LR: 0.00029939, Train Loss: 0.024163, Val Loss: 0.023704
+2025-10-18 13:12:46,415 - INFO - [Epoch 88][Iter 99000] LR: 0.00029917, Train Loss: 0.041873, Val Loss: 0.023222
+2025-10-18 13:25:41,305 - INFO - [Epoch 88][Iter 100000] LR: 0.00029891, Train Loss: 0.010574, Val Loss: 0.023271
+2025-10-18 13:25:41,305 - INFO - Saving checkpoint...
+2025-10-18 13:28:23,767 - INFO - [Iter 100000] Val Loss: 0.023271, PSNR: 29.11, SSIM: 0.8755
+2025-10-18 13:41:19,164 - INFO - [Epoch 88][Iter 101000] LR: 0.00029862, Train Loss: 0.021797, Val Loss: 0.024721
+2025-10-18 13:54:14,627 - INFO - [Epoch 88][Iter 102000] LR: 0.00029830, Train Loss: 0.050386, Val Loss: 0.023155
+2025-10-18 14:07:09,498 - INFO - [Epoch 88][Iter 103000] LR: 0.00029794, Train Loss: 0.017870, Val Loss: 0.022385
+2025-10-18 14:20:04,356 - INFO - [Epoch 89][Iter 104000] LR: 0.00029755, Train Loss: 0.036951, Val Loss: 0.023353
+2025-10-18 14:20:04,356 - INFO - Saving checkpoint...
+2025-10-18 14:22:46,850 - INFO - [Iter 104000] Val Loss: 0.023353, PSNR: 29.17, SSIM: 0.8755
+2025-10-18 14:35:42,631 - INFO - [Epoch 89][Iter 105000] LR: 0.00029713, Train Loss: 0.019824, Val Loss: 0.022246
+2025-10-18 14:48:37,396 - INFO - [Epoch 89][Iter 106000] LR: 0.00029667, Train Loss: 0.018731, Val Loss: 0.022021
+2025-10-18 15:01:32,257 - INFO - [Epoch 89][Iter 107000] LR: 0.00029618, Train Loss: 0.014329, Val Loss: 0.024398
+2025-10-18 15:14:26,994 - INFO - [Epoch 89][Iter 108000] LR: 0.00029566, Train Loss: 0.026783, Val Loss: 0.022416
+2025-10-18 15:14:26,994 - INFO - Saving checkpoint...
+2025-10-18 15:17:09,388 - INFO - [Iter 108000] Val Loss: 0.022416, PSNR: 29.57, SSIM: 0.8813
+2025-10-18 15:30:04,418 - INFO - [Epoch 90][Iter 109000] LR: 0.00029510, Train Loss: 0.008208, Val Loss: 0.022057
+2025-10-18 15:42:58,589 - INFO - [Epoch 90][Iter 110000] LR: 0.00029451, Train Loss: 0.015348, Val Loss: 0.021608
+2025-10-18 15:55:52,341 - INFO - [Epoch 90][Iter 111000] LR: 0.00029389, Train Loss: 0.015572, Val Loss: 0.021662
+2025-10-18 16:08:46,382 - INFO - [Epoch 90][Iter 112000] LR: 0.00029323, Train Loss: 0.011216, Val Loss: 0.021782
+2025-10-18 16:08:46,382 - INFO - Saving checkpoint...
+2025-10-18 16:11:28,659 - INFO - [Iter 112000] Val Loss: 0.021782, PSNR: 29.81, SSIM: 0.8867
+2025-10-18 16:24:22,900 - INFO - [Epoch 90][Iter 113000] LR: 0.00029254, Train Loss: 0.019035, Val Loss: 0.022000
+2025-10-18 16:37:16,770 - INFO - [Epoch 90][Iter 114000] LR: 0.00029182, Train Loss: 0.011564, Val Loss: 0.022268
+2025-10-18 16:50:11,314 - INFO - [Epoch 91][Iter 115000] LR: 0.00029107, Train Loss: 0.023755, Val Loss: 0.022606
+2025-10-18 17:03:05,385 - INFO - [Epoch 91][Iter 116000] LR: 0.00029028, Train Loss: 0.023219, Val Loss: 0.022320
+2025-10-18 17:03:05,385 - INFO - Saving checkpoint...
+2025-10-18 17:05:47,643 - INFO - [Iter 116000] Val Loss: 0.022320, PSNR: 29.65, SSIM: 0.8851
+2025-10-18 17:18:42,455 - INFO - [Epoch 91][Iter 117000] LR: 0.00028947, Train Loss: 0.011093, Val Loss: 0.021554
+2025-10-18 17:31:37,017 - INFO - [Epoch 91][Iter 118000] LR: 0.00028862, Train Loss: 0.017092, Val Loss: 0.021882
+2025-10-18 17:44:31,081 - INFO - [Epoch 91][Iter 119000] LR: 0.00028774, Train Loss: 0.020037, Val Loss: 0.021802
+2025-10-18 17:57:25,021 - INFO - [Epoch 91][Iter 120000] LR: 0.00028683, Train Loss: 0.008735, Val Loss: 0.022465
+2025-10-18 17:57:25,022 - INFO - Saving checkpoint...
+2025-10-18 18:00:07,333 - INFO - [Iter 120000] Val Loss: 0.022465, PSNR: 29.58, SSIM: 0.8804
+2025-10-18 18:13:02,047 - INFO - [Epoch 92][Iter 121000] LR: 0.00028589, Train Loss: 0.010207, Val Loss: 0.022004
+2025-10-18 18:25:56,994 - INFO - [Epoch 92][Iter 122000] LR: 0.00028491, Train Loss: 0.009480, Val Loss: 0.021756
+2025-10-18 18:38:52,040 - INFO - [Epoch 92][Iter 123000] LR: 0.00028391, Train Loss: 0.031024, Val Loss: 0.021518
+2025-10-18 18:51:47,529 - INFO - [Epoch 92][Iter 124000] LR: 0.00028288, Train Loss: 0.010059, Val Loss: 0.022036
+2025-10-18 18:51:47,529 - INFO - Saving checkpoint...
+2025-10-18 18:54:30,363 - INFO - [Iter 124000] Val Loss: 0.022036, PSNR: 29.72, SSIM: 0.8869
+2025-10-18 19:07:26,376 - INFO - [Epoch 92][Iter 125000] LR: 0.00028181, Train Loss: 0.010533, Val Loss: 0.021369
+2025-10-18 19:20:21,620 - INFO - [Epoch 93][Iter 126000] LR: 0.00028072, Train Loss: 0.028114, Val Loss: 0.023028
+2025-10-18 19:33:16,376 - INFO - [Epoch 93][Iter 127000] LR: 0.00027959, Train Loss: 0.017136, Val Loss: 0.021174
+2025-10-18 19:46:11,445 - INFO - [Epoch 93][Iter 128000] LR: 0.00027844, Train Loss: 0.019719, Val Loss: 0.021653
+2025-10-18 19:46:11,446 - INFO - Saving checkpoint...
+2025-10-18 19:48:53,867 - INFO - [Iter 128000] Val Loss: 0.021653, PSNR: 29.77, SSIM: 0.8879
+2025-10-18 20:01:49,117 - INFO - [Epoch 93][Iter 129000] LR: 0.00027726, Train Loss: 0.014477, Val Loss: 0.021104
+2025-10-18 20:14:43,465 - INFO - [Epoch 93][Iter 130000] LR: 0.00027604, Train Loss: 0.014376, Val Loss: 0.021225
+2025-10-18 20:27:37,998 - INFO - [Epoch 93][Iter 131000] LR: 0.00027480, Train Loss: 0.023321, Val Loss: 0.021610
+2025-10-18 20:40:32,689 - INFO - [Epoch 94][Iter 132000] LR: 0.00027354, Train Loss: 0.019972, Val Loss: 0.022164
+2025-10-18 20:40:32,689 - INFO - Saving checkpoint...
+2025-10-18 20:43:15,124 - INFO - [Iter 132000] Val Loss: 0.022164, PSNR: 29.65, SSIM: 0.8852
+2025-10-18 20:56:10,865 - INFO - [Epoch 94][Iter 133000] LR: 0.00027224, Train Loss: 0.009533, Val Loss: 0.023488
+2025-10-18 21:09:06,459 - INFO - [Epoch 94][Iter 134000] LR: 0.00027091, Train Loss: 0.005747, Val Loss: 0.021030
+2025-10-18 21:22:02,028 - INFO - [Epoch 94][Iter 135000] LR: 0.00026956, Train Loss: 0.011905, Val Loss: 0.021114
+2025-10-18 21:34:57,265 - INFO - [Epoch 94][Iter 136000] LR: 0.00026818, Train Loss: 0.011480, Val Loss: 0.021830
+2025-10-18 21:34:57,265 - INFO - Saving checkpoint...
+2025-10-18 21:37:40,282 - INFO - [Iter 136000] Val Loss: 0.021830, PSNR: 29.77, SSIM: 0.8865
+2025-10-18 21:50:36,707 - INFO - [Epoch 95][Iter 137000] LR: 0.00026678, Train Loss: 0.011821, Val Loss: 0.022809
+2025-10-18 22:03:32,769 - INFO - [Epoch 95][Iter 138000] LR: 0.00026535, Train Loss: 0.007351, Val Loss: 0.020864
+2025-10-18 22:16:29,004 - INFO - [Epoch 95][Iter 139000] LR: 0.00026389, Train Loss: 0.013299, Val Loss: 0.021162
+2025-10-18 22:29:25,091 - INFO - [Epoch 95][Iter 140000] LR: 0.00026240, Train Loss: 0.010801, Val Loss: 0.021403
+2025-10-18 22:29:25,092 - INFO - Saving checkpoint...
+2025-10-18 22:32:08,380 - INFO - [Iter 140000] Val Loss: 0.021403, PSNR: 29.98, SSIM: 0.8894
+2025-10-18 22:45:05,203 - INFO - [Epoch 95][Iter 141000] LR: 0.00026089, Train Loss: 0.032975, Val Loss: 0.021171
+2025-10-18 22:58:01,535 - INFO - [Epoch 95][Iter 142000] LR: 0.00025936, Train Loss: 0.014888, Val Loss: 0.021157
+2025-10-18 23:10:57,806 - INFO - [Epoch 96][Iter 143000] LR: 0.00025780, Train Loss: 0.020029, Val Loss: 0.023175
+2025-10-18 23:23:53,752 - INFO - [Epoch 96][Iter 144000] LR: 0.00025621, Train Loss: 0.015888, Val Loss: 0.021876
+2025-10-18 23:23:53,752 - INFO - Saving checkpoint...
+2025-10-18 23:26:36,645 - INFO - [Iter 144000] Val Loss: 0.021876, PSNR: 29.80, SSIM: 0.8858
+2025-10-18 23:39:33,012 - INFO - [Epoch 96][Iter 145000] LR: 0.00025460, Train Loss: 0.010330, Val Loss: 0.021027
+2025-10-18 23:52:28,907 - INFO - [Epoch 96][Iter 146000] LR: 0.00025297, Train Loss: 0.009907, Val Loss: 0.021007
+2025-10-19 00:05:24,814 - INFO - [Epoch 96][Iter 147000] LR: 0.00025132, Train Loss: 0.011213, Val Loss: 0.020629
+2025-10-19 00:18:21,026 - INFO - [Epoch 96][Iter 148000] LR: 0.00024964, Train Loss: 0.008378, Val Loss: 0.021027
+2025-10-19 00:18:21,026 - INFO - Saving checkpoint...
+2025-10-19 00:21:04,303 - INFO - [Iter 148000] Val Loss: 0.021027, PSNR: 30.11, SSIM: 0.8926
+2025-10-19 00:34:01,484 - INFO - [Epoch 97][Iter 149000] LR: 0.00024794, Train Loss: 0.025826, Val Loss: 0.021109
+2025-10-19 00:46:58,178 - INFO - [Epoch 97][Iter 150000] LR: 0.00024621, Train Loss: 0.006177, Val Loss: 0.020769
+2025-10-19 00:59:54,513 - INFO - [Epoch 97][Iter 151000] LR: 0.00024447, Train Loss: 0.020840, Val Loss: 0.021423
+2025-10-19 01:12:50,871 - INFO - [Epoch 97][Iter 152000] LR: 0.00024270, Train Loss: 0.016499, Val Loss: 0.021422
+2025-10-19 01:12:50,871 - INFO - Saving checkpoint...
+2025-10-19 01:15:34,217 - INFO - [Iter 152000] Val Loss: 0.021422, PSNR: 29.97, SSIM: 0.8912
+2025-10-19 01:28:31,230 - INFO - [Epoch 97][Iter 153000] LR: 0.00024091, Train Loss: 0.016028, Val Loss: 0.020973
+2025-10-19 01:41:27,847 - INFO - [Epoch 98][Iter 154000] LR: 0.00023910, Train Loss: 0.028193, Val Loss: 0.022445
+2025-10-19 01:54:24,339 - INFO - [Epoch 98][Iter 155000] LR: 0.00023727, Train Loss: 0.021779, Val Loss: 0.020931
+2025-10-19 02:04:42,266 - INFO - Training Dataset: 16824 images
+Dataset enlarge ratio: 1
+Batch size per GPU: 2
+World size (GPU number): 1
+Iters per epoch: 8412
+Total epochs: 36, Total iters: 300000
+2025-10-19 02:04:42,269 - INFO - Validation Dataset: 1111 images
+2025-10-19 02:07:20,982 - INFO - [Epoch 98][Iter 156000] LR: 0.00023543, Train Loss: 0.019623, Val Loss: 0.020578
+2025-10-19 02:07:20,983 - INFO - Saving checkpoint...
+2025-10-19 02:10:04,003 - INFO - [Iter 156000] Val Loss: 0.020578, PSNR: 30.30, SSIM: 0.8968
+2025-10-19 02:10:04,309 - INFO - 
+Updating Patch_Size to 192 and Batch_Size to 2
+
+2025-10-19 02:23:32,686 - INFO - [Epoch 98][Iter 157000] LR: 0.00023356, Train Loss: 0.012719, Val Loss: 0.020907
+2025-10-19 02:36:58,164 - INFO - [Epoch 98][Iter 158000] LR: 0.00023167, Train Loss: 0.015113, Val Loss: 0.020641
+2025-10-19 02:50:23,261 - INFO - [Epoch 98][Iter 159000] LR: 0.00022977, Train Loss: 0.014475, Val Loss: 0.020411
+2025-10-19 03:03:48,635 - INFO - [Epoch 98][Iter 160000] LR: 0.00022784, Train Loss: 0.009335, Val Loss: 0.020443
+2025-10-19 03:03:48,635 - INFO - Saving checkpoint...
+2025-10-19 03:06:31,271 - INFO - [Iter 160000] Val Loss: 0.020443, PSNR: 30.37, SSIM: 0.8975
+2025-10-19 03:19:56,270 - INFO - [Epoch 98][Iter 161000] LR: 0.00022590, Train Loss: 0.004853, Val Loss: 0.020608
+2025-10-19 03:33:21,075 - INFO - [Epoch 98][Iter 162000] LR: 0.00022394, Train Loss: 0.034103, Val Loss: 0.020581
+2025-10-19 03:46:46,418 - INFO - [Epoch 98][Iter 163000] LR: 0.00022197, Train Loss: 0.023899, Val Loss: 0.020359
+2025-10-19 04:00:11,445 - INFO - [Epoch 98][Iter 164000] LR: 0.00021998, Train Loss: 0.009735, Val Loss: 0.021021
+2025-10-19 04:00:11,446 - INFO - Saving checkpoint...
+2025-10-19 04:02:54,274 - INFO - [Iter 164000] Val Loss: 0.021021, PSNR: 30.15, SSIM: 0.8925
+2025-10-19 04:16:19,769 - INFO - [Epoch 99][Iter 165000] LR: 0.00021797, Train Loss: 0.034124, Val Loss: 0.021160
+2025-10-19 04:29:45,196 - INFO - [Epoch 99][Iter 166000] LR: 0.00021595, Train Loss: 0.008815, Val Loss: 0.020194
+2025-10-19 04:43:10,081 - INFO - [Epoch 99][Iter 167000] LR: 0.00021391, Train Loss: 0.008861, Val Loss: 0.020542
+2025-10-19 04:56:34,623 - INFO - [Epoch 99][Iter 168000] LR: 0.00021186, Train Loss: 0.024764, Val Loss: 0.021125
+2025-10-19 04:56:34,624 - INFO - Saving checkpoint...
+2025-10-19 04:59:17,640 - INFO - [Iter 168000] Val Loss: 0.021125, PSNR: 30.03, SSIM: 0.8914
+2025-10-19 05:12:43,312 - INFO - [Epoch 99][Iter 169000] LR: 0.00020979, Train Loss: 0.006321, Val Loss: 0.020425
+2025-10-19 05:26:08,628 - INFO - [Epoch 99][Iter 170000] LR: 0.00020771, Train Loss: 0.018051, Val Loss: 0.021263
+2025-10-19 05:39:33,441 - INFO - [Epoch 99][Iter 171000] LR: 0.00020562, Train Loss: 0.050349, Val Loss: 0.020598
+2025-10-19 05:52:58,553 - INFO - [Epoch 99][Iter 172000] LR: 0.00020351, Train Loss: 0.004899, Val Loss: 0.020494
+2025-10-19 05:52:58,553 - INFO - Saving checkpoint...
+2025-10-19 05:55:41,272 - INFO - [Iter 172000] Val Loss: 0.020494, PSNR: 30.33, SSIM: 0.8975
+2025-10-19 06:09:07,060 - INFO - [Epoch 100][Iter 173000] LR: 0.00020140, Train Loss: 0.009258, Val Loss: 0.020414
+2025-10-19 06:22:32,170 - INFO - [Epoch 100][Iter 174000] LR: 0.00019927, Train Loss: 0.039324, Val Loss: 0.020866
+2025-10-19 06:35:56,175 - INFO - [Epoch 100][Iter 175000] LR: 0.00019713, Train Loss: 0.055831, Val Loss: 0.020739
+2025-10-19 06:49:20,298 - INFO - [Epoch 100][Iter 176000] LR: 0.00019498, Train Loss: 0.016764, Val Loss: 0.019913
+2025-10-19 06:49:20,298 - INFO - Saving checkpoint...
+2025-10-19 06:52:02,643 - INFO - [Iter 176000] Val Loss: 0.019913, PSNR: 30.55, SSIM: 0.9013
+2025-10-19 07:05:27,697 - INFO - [Epoch 100][Iter 177000] LR: 0.00019282, Train Loss: 0.013530, Val Loss: 0.020145
+2025-10-19 07:18:51,281 - INFO - [Epoch 100][Iter 178000] LR: 0.00019065, Train Loss: 0.008511, Val Loss: 0.020653
+2025-10-19 07:32:15,670 - INFO - [Epoch 100][Iter 179000] LR: 0.00018847, Train Loss: 0.028310, Val Loss: 0.020469
+2025-10-19 07:45:39,352 - INFO - [Epoch 100][Iter 180000] LR: 0.00018628, Train Loss: 0.017588, Val Loss: 0.020315
+2025-10-19 07:45:39,352 - INFO - Saving checkpoint...
+2025-10-19 07:48:21,708 - INFO - [Iter 180000] Val Loss: 0.020315, PSNR: 30.43, SSIM: 0.8990
+2025-10-19 08:01:46,061 - INFO - [Epoch 100][Iter 181000] LR: 0.00018408, Train Loss: 0.018197, Val Loss: 0.020376
+2025-10-19 08:15:10,856 - INFO - [Epoch 101][Iter 182000] LR: 0.00018188, Train Loss: 0.013734, Val Loss: 0.020416
+2025-10-19 08:28:34,694 - INFO - [Epoch 101][Iter 183000] LR: 0.00017967, Train Loss: 0.009751, Val Loss: 0.019672
+2025-10-19 08:41:58,766 - INFO - [Epoch 101][Iter 184000] LR: 0.00017745, Train Loss: 0.010752, Val Loss: 0.020687
+2025-10-19 08:41:58,766 - INFO - Saving checkpoint...
+2025-10-19 08:44:41,298 - INFO - [Iter 184000] Val Loss: 0.020687, PSNR: 30.16, SSIM: 0.8967
+2025-10-19 08:58:06,135 - INFO - [Epoch 101][Iter 185000] LR: 0.00017522, Train Loss: 0.021630, Val Loss: 0.020282
+2025-10-19 09:11:30,725 - INFO - [Epoch 101][Iter 186000] LR: 0.00017299, Train Loss: 0.004213, Val Loss: 0.019931
+2025-10-19 09:24:55,201 - INFO - [Epoch 101][Iter 187000] LR: 0.00017076, Train Loss: 0.021873, Val Loss: 0.019921
+2025-10-19 09:38:19,575 - INFO - [Epoch 101][Iter 188000] LR: 0.00016852, Train Loss: 0.008044, Val Loss: 0.019901
+2025-10-19 09:38:19,575 - INFO - Saving checkpoint...
+2025-10-19 09:41:02,120 - INFO - [Iter 188000] Val Loss: 0.019901, PSNR: 30.61, SSIM: 0.9022
+2025-10-19 09:54:26,672 - INFO - [Epoch 101][Iter 189000] LR: 0.00016628, Train Loss: 0.009975, Val Loss: 0.019829
+2025-10-19 10:07:51,189 - INFO - [Epoch 102][Iter 190000] LR: 0.00016403, Train Loss: 0.020723, Val Loss: 0.020488
+2025-10-19 10:21:15,323 - INFO - [Epoch 102][Iter 191000] LR: 0.00016178, Train Loss: 0.012718, Val Loss: 0.020028
+2025-10-19 10:34:39,696 - INFO - [Epoch 102][Iter 192000] LR: 0.00015953, Train Loss: 0.018501, Val Loss: 0.020083
+2025-10-19 10:34:39,697 - INFO - Saving checkpoint...
+2025-10-19 10:37:22,005 - INFO - [Iter 192000] Val Loss: 0.020083, PSNR: 30.51, SSIM: 0.9012
+2025-10-19 10:50:46,401 - INFO - [Epoch 102][Iter 193000] LR: 0.00015727, Train Loss: 0.013580, Val Loss: 0.019445
+2025-10-19 11:04:10,502 - INFO - [Epoch 102][Iter 194000] LR: 0.00015502, Train Loss: 0.047639, Val Loss: 0.019916
+2025-10-19 11:17:34,862 - INFO - [Epoch 102][Iter 195000] LR: 0.00015276, Train Loss: 0.011921, Val Loss: 0.019678
+2025-10-19 11:30:59,993 - INFO - [Epoch 102][Iter 196000] LR: 0.00015050, Train Loss: 0.011377, Val Loss: 0.019590
+2025-10-19 11:30:59,993 - INFO - Saving checkpoint...
+2025-10-19 11:33:43,605 - INFO - [Iter 196000] Val Loss: 0.019590, PSNR: 30.75, SSIM: 0.9033
+2025-10-19 11:47:08,561 - INFO - [Epoch 102][Iter 197000] LR: 0.00014824, Train Loss: 0.011832, Val Loss: 0.020283
+2025-10-19 12:00:33,361 - INFO - [Epoch 102][Iter 198000] LR: 0.00014598, Train Loss: 0.015472, Val Loss: 0.019695
+2025-10-19 12:13:58,639 - INFO - [Epoch 103][Iter 199000] LR: 0.00014373, Train Loss: 0.019098, Val Loss: 0.020147
+2025-10-19 12:27:23,882 - INFO - [Epoch 103][Iter 200000] LR: 0.00014147, Train Loss: 0.016236, Val Loss: 0.019332
+2025-10-19 12:27:23,882 - INFO - Saving checkpoint...
+2025-10-19 12:30:06,425 - INFO - [Iter 200000] Val Loss: 0.019332, PSNR: 30.83, SSIM: 0.9062
+2025-10-19 12:43:32,010 - INFO - [Epoch 103][Iter 201000] LR: 0.00013922, Train Loss: 0.012426, Val Loss: 0.019335
+2025-10-19 12:56:57,396 - INFO - [Epoch 103][Iter 202000] LR: 0.00013697, Train Loss: 0.010673, Val Loss: 0.019641
+2025-10-19 13:10:22,439 - INFO - [Epoch 103][Iter 203000] LR: 0.00013472, Train Loss: 0.023629, Val Loss: 0.019416
+2025-10-19 13:21:09,382 - INFO - Training Dataset: 16824 images
+Dataset enlarge ratio: 1
+Batch size per GPU: 1
+World size (GPU number): 1
+Iters per epoch: 16824
+Total epochs: 18, Total iters: 300000
+2025-10-19 13:21:09,385 - INFO - Validation Dataset: 1111 images
+2025-10-19 13:23:47,759 - INFO - [Epoch 103][Iter 204000] LR: 0.00013248, Train Loss: 0.020045, Val Loss: 0.019704
+2025-10-19 13:23:47,759 - INFO - Saving checkpoint...
+2025-10-19 13:26:30,406 - INFO - [Iter 204000] Val Loss: 0.019704, PSNR: 30.62, SSIM: 0.9038
+2025-10-19 13:26:30,712 - INFO - 
+Updating Patch_Size to 224 and Batch_Size to 1
+
+2025-10-19 13:35:44,652 - INFO - [Epoch 103][Iter 205000] LR: 0.00013024, Train Loss: 0.021560, Val Loss: 0.020524
+2025-10-19 13:44:55,985 - INFO - [Epoch 103][Iter 206000] LR: 0.00012801, Train Loss: 0.011471, Val Loss: 0.019548
+2025-10-19 13:54:06,924 - INFO - [Epoch 103][Iter 207000] LR: 0.00012578, Train Loss: 0.008362, Val Loss: 0.019253
+2025-10-19 14:03:18,064 - INFO - [Epoch 103][Iter 208000] LR: 0.00012355, Train Loss: 0.017166, Val Loss: 0.019291
+2025-10-19 14:03:18,065 - INFO - Saving checkpoint...
+2025-10-19 14:06:00,751 - INFO - [Iter 208000] Val Loss: 0.019291, PSNR: 30.86, SSIM: 0.9067
+2025-10-19 14:15:11,840 - INFO - [Epoch 103][Iter 209000] LR: 0.00012133, Train Loss: 0.018595, Val Loss: 0.019504
+2025-10-19 14:24:23,165 - INFO - [Epoch 103][Iter 210000] LR: 0.00011912, Train Loss: 0.012370, Val Loss: 0.019097
+2025-10-19 14:33:34,672 - INFO - [Epoch 103][Iter 211000] LR: 0.00011692, Train Loss: 0.008466, Val Loss: 0.019301
+2025-10-19 14:42:46,102 - INFO - [Epoch 103][Iter 212000] LR: 0.00011472, Train Loss: 0.021751, Val Loss: 0.019587
+2025-10-19 14:42:46,102 - INFO - Saving checkpoint...
+2025-10-19 14:45:28,845 - INFO - [Iter 212000] Val Loss: 0.019587, PSNR: 30.75, SSIM: 0.9044
+2025-10-19 14:54:40,606 - INFO - [Epoch 103][Iter 213000] LR: 0.00011253, Train Loss: 0.025618, Val Loss: 0.019826
+2025-10-19 15:03:51,947 - INFO - [Epoch 103][Iter 214000] LR: 0.00011035, Train Loss: 0.006274, Val Loss: 0.019402
+2025-10-19 15:13:03,268 - INFO - [Epoch 103][Iter 215000] LR: 0.00010818, Train Loss: 0.007625, Val Loss: 0.019412
+2025-10-19 15:22:14,652 - INFO - [Epoch 103][Iter 216000] LR: 0.00010602, Train Loss: 0.031748, Val Loss: 0.019444
+2025-10-19 15:22:14,653 - INFO - Saving checkpoint...
+2025-10-19 15:24:57,673 - INFO - [Iter 216000] Val Loss: 0.019444, PSNR: 30.80, SSIM: 0.9058
+2025-10-19 15:34:09,674 - INFO - [Epoch 103][Iter 217000] LR: 0.00010387, Train Loss: 0.014812, Val Loss: 0.019583
+2025-10-19 15:43:21,434 - INFO - [Epoch 103][Iter 218000] LR: 0.00010173, Train Loss: 0.019455, Val Loss: 0.019340
+2025-10-19 15:52:33,064 - INFO - [Epoch 103][Iter 219000] LR: 0.00009960, Train Loss: 0.012987, Val Loss: 0.019458
+2025-10-19 16:01:44,651 - INFO - [Epoch 103][Iter 220000] LR: 0.00009749, Train Loss: 0.008818, Val Loss: 0.019450
+2025-10-19 16:01:44,651 - INFO - Saving checkpoint...
+2025-10-19 16:04:27,909 - INFO - [Iter 220000] Val Loss: 0.019450, PSNR: 30.78, SSIM: 0.9049
+2025-10-19 16:13:40,072 - INFO - [Epoch 104][Iter 221000] LR: 0.00009538, Train Loss: 0.005402, Val Loss: 0.019244
+2025-10-19 16:22:51,754 - INFO - [Epoch 104][Iter 222000] LR: 0.00009329, Train Loss: 0.026482, Val Loss: 0.019326
+2025-10-19 16:32:03,736 - INFO - [Epoch 104][Iter 223000] LR: 0.00009121, Train Loss: 0.008323, Val Loss: 0.019436
+2025-10-19 16:41:15,708 - INFO - [Epoch 104][Iter 224000] LR: 0.00008914, Train Loss: 0.007486, Val Loss: 0.019000
+2025-10-19 16:41:15,709 - INFO - Saving checkpoint...
+2025-10-19 16:43:59,211 - INFO - [Iter 224000] Val Loss: 0.019000, PSNR: 31.00, SSIM: 0.9092
+2025-10-19 16:53:11,835 - INFO - [Epoch 104][Iter 225000] LR: 0.00008709, Train Loss: 0.039692, Val Loss: 0.021471
+2025-10-19 17:02:23,805 - INFO - [Epoch 104][Iter 226000] LR: 0.00008505, Train Loss: 0.008744, Val Loss: 0.019106
+2025-10-19 17:11:36,031 - INFO - [Epoch 104][Iter 227000] LR: 0.00008303, Train Loss: 0.017508, Val Loss: 0.018821
+2025-10-19 17:20:48,316 - INFO - [Epoch 104][Iter 228000] LR: 0.00008102, Train Loss: 0.009255, Val Loss: 0.019170
+2025-10-19 17:20:48,316 - INFO - Saving checkpoint...
+2025-10-19 17:23:31,773 - INFO - [Iter 228000] Val Loss: 0.019170, PSNR: 30.94, SSIM: 0.9061
+2025-10-19 17:32:44,502 - INFO - [Epoch 104][Iter 229000] LR: 0.00007903, Train Loss: 0.015631, Val Loss: 0.019009
+2025-10-19 17:41:56,979 - INFO - [Epoch 104][Iter 230000] LR: 0.00007706, Train Loss: 0.014497, Val Loss: 0.019026
+2025-10-19 17:51:09,413 - INFO - [Epoch 104][Iter 231000] LR: 0.00007510, Train Loss: 0.006827, Val Loss: 0.019338
+2025-10-19 18:00:21,919 - INFO - [Epoch 104][Iter 232000] LR: 0.00007316, Train Loss: 0.006871, Val Loss: 0.018977
+2025-10-19 18:00:21,920 - INFO - Saving checkpoint...
+2025-10-19 18:03:06,005 - INFO - [Iter 232000] Val Loss: 0.018977, PSNR: 31.01, SSIM: 0.9084
+2025-10-19 18:12:18,832 - INFO - [Epoch 104][Iter 233000] LR: 0.00007123, Train Loss: 0.012349, Val Loss: 0.018979
+2025-10-19 18:21:31,359 - INFO - [Epoch 104][Iter 234000] LR: 0.00006933, Train Loss: 0.046384, Val Loss: 0.019014
+2025-10-19 18:30:43,807 - INFO - [Epoch 104][Iter 235000] LR: 0.00006744, Train Loss: 0.006886, Val Loss: 0.018916
+2025-10-19 18:39:56,270 - INFO - [Epoch 104][Iter 236000] LR: 0.00006557, Train Loss: 0.006945, Val Loss: 0.019123
+2025-10-19 18:39:56,270 - INFO - Saving checkpoint...
+2025-10-19 18:42:40,335 - INFO - [Iter 236000] Val Loss: 0.019123, PSNR: 30.96, SSIM: 0.9078
+2025-10-19 18:51:53,251 - INFO - [Epoch 104][Iter 237000] LR: 0.00006373, Train Loss: 0.012584, Val Loss: 0.019002
+2025-10-19 19:01:05,964 - INFO - [Epoch 105][Iter 238000] LR: 0.00006190, Train Loss: 0.011624, Val Loss: 0.018787
+2025-10-19 19:10:18,395 - INFO - [Epoch 105][Iter 239000] LR: 0.00006009, Train Loss: 0.023053, Val Loss: 0.018895
+2025-10-19 19:16:52,590 - INFO - Training Dataset: 16824 images
+Dataset enlarge ratio: 1
+Batch size per GPU: 1
+World size (GPU number): 1
+Iters per epoch: 16824
+Total epochs: 18, Total iters: 300000
+2025-10-19 19:16:52,593 - INFO - Validation Dataset: 1111 images
+2025-10-19 19:19:31,299 - INFO - [Epoch 105][Iter 240000] LR: 0.00005830, Train Loss: 0.007838, Val Loss: 0.019005
+2025-10-19 19:19:31,299 - INFO - Saving checkpoint...
+2025-10-19 19:22:15,414 - INFO - [Iter 240000] Val Loss: 0.019005, PSNR: 30.99, SSIM: 0.9092
+2025-10-19 19:22:15,646 - INFO - 
+Updating Patch_Size to 256 and Batch_Size to 1
+
+2025-10-19 19:33:22,607 - INFO - [Epoch 105][Iter 241000] LR: 0.00005653, Train Loss: 0.016381, Val Loss: 0.018593
+2025-10-19 19:44:26,715 - INFO - [Epoch 105][Iter 242000] LR: 0.00005479, Train Loss: 0.008689, Val Loss: 0.018584
+2025-10-19 19:55:30,818 - INFO - [Epoch 105][Iter 243000] LR: 0.00005306, Train Loss: 0.007758, Val Loss: 0.018583
+2025-10-19 20:06:34,907 - INFO - [Epoch 105][Iter 244000] LR: 0.00005136, Train Loss: 0.016447, Val Loss: 0.018603
+2025-10-19 20:06:34,907 - INFO - Saving checkpoint...
+2025-10-19 20:09:18,914 - INFO - [Iter 244000] Val Loss: 0.018603, PSNR: 31.16, SSIM: 0.9116
+2025-10-19 20:20:23,521 - INFO - [Epoch 105][Iter 245000] LR: 0.00004968, Train Loss: 0.011203, Val Loss: 0.018534
+2025-10-19 20:31:27,616 - INFO - [Epoch 105][Iter 246000] LR: 0.00004803, Train Loss: 0.014065, Val Loss: 0.018400
+2025-10-19 20:42:31,874 - INFO - [Epoch 105][Iter 247000] LR: 0.00004640, Train Loss: 0.008351, Val Loss: 0.018425
+2025-10-19 20:53:36,081 - INFO - [Epoch 105][Iter 248000] LR: 0.00004479, Train Loss: 0.032213, Val Loss: 0.018544
+2025-10-19 20:53:36,081 - INFO - Saving checkpoint...
+2025-10-19 20:56:20,147 - INFO - [Iter 248000] Val Loss: 0.018544, PSNR: 31.20, SSIM: 0.9113
+2025-10-19 21:07:24,824 - INFO - [Epoch 105][Iter 249000] LR: 0.00004320, Train Loss: 0.026905, Val Loss: 0.018988
+2025-10-19 21:18:28,885 - INFO - [Epoch 105][Iter 250000] LR: 0.00004164, Train Loss: 0.004099, Val Loss: 0.018506
+2025-10-19 21:29:32,233 - INFO - [Epoch 105][Iter 251000] LR: 0.00004011, Train Loss: 0.007515, Val Loss: 0.018486
+2025-10-19 21:40:35,544 - INFO - [Epoch 105][Iter 252000] LR: 0.00003860, Train Loss: 0.033397, Val Loss: 0.018542
+2025-10-19 21:40:35,544 - INFO - Saving checkpoint...
+2025-10-19 21:43:18,787 - INFO - [Iter 252000] Val Loss: 0.018542, PSNR: 31.18, SSIM: 0.9122
+2025-10-19 21:54:22,480 - INFO - [Epoch 105][Iter 253000] LR: 0.00003711, Train Loss: 0.010538, Val Loss: 0.018498
+2025-10-19 22:05:25,782 - INFO - [Epoch 105][Iter 254000] LR: 0.00003565, Train Loss: 0.016642, Val Loss: 0.018488
+2025-10-19 22:16:29,036 - INFO - [Epoch 105][Iter 255000] LR: 0.00003422, Train Loss: 0.008079, Val Loss: 0.018482
+2025-10-19 22:27:32,294 - INFO - [Epoch 105][Iter 256000] LR: 0.00003282, Train Loss: 0.009042, Val Loss: 0.018443
+2025-10-19 22:27:32,294 - INFO - Saving checkpoint...
+2025-10-19 22:30:15,705 - INFO - [Iter 256000] Val Loss: 0.018443, PSNR: 31.26, SSIM: 0.9126
+2025-10-19 22:41:19,264 - INFO - [Epoch 106][Iter 257000] LR: 0.00003144, Train Loss: 0.014375, Val Loss: 0.018347
+2025-10-19 22:52:22,558 - INFO - [Epoch 106][Iter 258000] LR: 0.00003009, Train Loss: 0.019931, Val Loss: 0.018368
+2025-10-19 23:03:26,117 - INFO - [Epoch 106][Iter 259000] LR: 0.00002876, Train Loss: 0.012107, Val Loss: 0.018448
+2025-10-19 23:14:29,532 - INFO - [Epoch 106][Iter 260000] LR: 0.00002746, Train Loss: 0.007352, Val Loss: 0.018278
+2025-10-19 23:14:29,533 - INFO - Saving checkpoint...
+2025-10-19 23:17:12,992 - INFO - [Iter 260000] Val Loss: 0.018278, PSNR: 31.34, SSIM: 0.9142
+2025-10-19 23:28:17,017 - INFO - [Epoch 106][Iter 261000] LR: 0.00002620, Train Loss: 0.038655, Val Loss: 0.018576
+2025-10-19 23:39:20,576 - INFO - [Epoch 106][Iter 262000] LR: 0.00002496, Train Loss: 0.011193, Val Loss: 0.018241
+2025-10-19 23:50:24,086 - INFO - [Epoch 106][Iter 263000] LR: 0.00002374, Train Loss: 0.015327, Val Loss: 0.018182
+2025-10-20 00:01:27,549 - INFO - [Epoch 106][Iter 264000] LR: 0.00002256, Train Loss: 0.024004, Val Loss: 0.018266
+2025-10-20 00:01:27,550 - INFO - Saving checkpoint...
+2025-10-20 00:04:11,130 - INFO - [Iter 264000] Val Loss: 0.018266, PSNR: 31.35, SSIM: 0.9133
+2025-10-20 00:15:14,901 - INFO - [Epoch 106][Iter 265000] LR: 0.00002141, Train Loss: 0.024130, Val Loss: 0.018291
+2025-10-20 00:26:19,274 - INFO - [Epoch 106][Iter 266000] LR: 0.00002028, Train Loss: 0.017646, Val Loss: 0.018441
+2025-10-20 00:37:23,983 - INFO - [Epoch 106][Iter 267000] LR: 0.00001919, Train Loss: 0.007664, Val Loss: 0.018349
+2025-10-20 00:48:28,679 - INFO - [Epoch 106][Iter 268000] LR: 0.00001812, Train Loss: 0.014970, Val Loss: 0.018266
+2025-10-20 00:48:28,679 - INFO - Saving checkpoint...
+2025-10-20 00:51:13,120 - INFO - [Iter 268000] Val Loss: 0.018266, PSNR: 31.33, SSIM: 0.9138
+2025-10-20 01:02:18,562 - INFO - [Epoch 106][Iter 269000] LR: 0.00001709, Train Loss: 0.010587, Val Loss: 0.018235
+2025-10-20 01:13:23,327 - INFO - [Epoch 106][Iter 270000] LR: 0.00001609, Train Loss: 0.043101, Val Loss: 0.018200
+2025-10-20 01:24:28,037 - INFO - [Epoch 106][Iter 271000] LR: 0.00001511, Train Loss: 0.007693, Val Loss: 0.018185
+2025-10-20 01:35:32,711 - INFO - [Epoch 106][Iter 272000] LR: 0.00001417, Train Loss: 0.007582, Val Loss: 0.018304
+2025-10-20 01:35:32,712 - INFO - Saving checkpoint...
+2025-10-20 01:38:17,118 - INFO - [Iter 272000] Val Loss: 0.018304, PSNR: 31.34, SSIM: 0.9139
+2025-10-20 01:49:22,552 - INFO - [Epoch 106][Iter 273000] LR: 0.00001326, Train Loss: 0.009015, Val Loss: 0.018233
+2025-10-20 02:00:27,489 - INFO - [Epoch 107][Iter 274000] LR: 0.00001238, Train Loss: 0.009773, Val Loss: 0.018143
+2025-10-20 02:11:32,400 - INFO - [Epoch 107][Iter 275000] LR: 0.00001153, Train Loss: 0.033738, Val Loss: 0.018147
+2025-10-20 02:19:58,546 - INFO - Training Dataset: 16824 images
+Dataset enlarge ratio: 1
+Batch size per GPU: 1
+World size (GPU number): 1
+Iters per epoch: 16824
+Total epochs: 18, Total iters: 300000
+2025-10-20 02:19:58,549 - INFO - Validation Dataset: 1111 images
+2025-10-20 02:22:37,410 - INFO - [Epoch 107][Iter 276000] LR: 0.00001072, Train Loss: 0.011320, Val Loss: 0.018222
+2025-10-20 02:22:37,410 - INFO - Saving checkpoint...
+2025-10-20 02:25:21,823 - INFO - [Iter 276000] Val Loss: 0.018222, PSNR: 31.38, SSIM: 0.9145
+2025-10-20 02:25:22,096 - INFO - 
+Updating Patch_Size to 256 and Batch_Size to 1
+
+2025-10-20 02:36:27,252 - INFO - [Epoch 107][Iter 277000] LR: 0.00000993, Train Loss: 0.010863, Val Loss: 0.018119
+2025-10-20 02:47:32,007 - INFO - [Epoch 107][Iter 278000] LR: 0.00000918, Train Loss: 0.012232, Val Loss: 0.018097
+2025-10-20 02:58:36,889 - INFO - [Epoch 107][Iter 279000] LR: 0.00000846, Train Loss: 0.005855, Val Loss: 0.018113
+2025-10-20 03:09:41,696 - INFO - [Epoch 107][Iter 280000] LR: 0.00000777, Train Loss: 0.012622, Val Loss: 0.018075
+2025-10-20 03:09:41,696 - INFO - Saving checkpoint...
+2025-10-20 03:12:26,191 - INFO - [Iter 280000] Val Loss: 0.018075, PSNR: 31.44, SSIM: 0.9152
+2025-10-20 03:23:31,886 - INFO - [Epoch 107][Iter 281000] LR: 0.00000711, Train Loss: 0.011666, Val Loss: 0.018070
+2025-10-20 03:34:36,894 - INFO - [Epoch 107][Iter 282000] LR: 0.00000649, Train Loss: 0.013779, Val Loss: 0.018038
+2025-10-20 03:45:42,023 - INFO - [Epoch 107][Iter 283000] LR: 0.00000590, Train Loss: 0.007884, Val Loss: 0.018051
+2025-10-20 03:56:47,094 - INFO - [Epoch 107][Iter 284000] LR: 0.00000534, Train Loss: 0.008072, Val Loss: 0.018116
+2025-10-20 03:56:47,095 - INFO - Saving checkpoint...
+2025-10-20 03:59:31,651 - INFO - [Iter 284000] Val Loss: 0.018116, PSNR: 31.43, SSIM: 0.9144
+2025-10-20 04:10:37,662 - INFO - [Epoch 107][Iter 285000] LR: 0.00000482, Train Loss: 0.032958, Val Loss: 0.018220
+2025-10-20 04:21:42,913 - INFO - [Epoch 107][Iter 286000] LR: 0.00000433, Train Loss: 0.005135, Val Loss: 0.018079
+2025-10-20 04:32:48,145 - INFO - [Epoch 107][Iter 287000] LR: 0.00000387, Train Loss: 0.008582, Val Loss: 0.018061
+2025-10-20 04:43:53,314 - INFO - [Epoch 107][Iter 288000] LR: 0.00000345, Train Loss: 0.031538, Val Loss: 0.018049
+2025-10-20 04:43:53,314 - INFO - Saving checkpoint...
+2025-10-20 04:46:37,902 - INFO - [Iter 288000] Val Loss: 0.018049, PSNR: 31.44, SSIM: 0.9159
+2025-10-20 04:57:43,881 - INFO - [Epoch 107][Iter 289000] LR: 0.00000306, Train Loss: 0.009860, Val Loss: 0.018019
+2025-10-20 05:08:49,020 - INFO - [Epoch 107][Iter 290000] LR: 0.00000270, Train Loss: 0.014644, Val Loss: 0.018025
+2025-10-20 05:19:54,278 - INFO - [Epoch 107][Iter 291000] LR: 0.00000238, Train Loss: 0.005667, Val Loss: 0.018027
+2025-10-20 05:30:59,438 - INFO - [Epoch 107][Iter 292000] LR: 0.00000209, Train Loss: 0.006904, Val Loss: 0.018053
+2025-10-20 05:30:59,438 - INFO - Saving checkpoint...
+2025-10-20 05:33:44,061 - INFO - [Iter 292000] Val Loss: 0.018053, PSNR: 31.44, SSIM: 0.9155
+2025-10-20 05:44:50,174 - INFO - [Epoch 108][Iter 293000] LR: 0.00000183, Train Loss: 0.016949, Val Loss: 0.018024
+2025-10-20 05:55:55,438 - INFO - [Epoch 108][Iter 294000] LR: 0.00000161, Train Loss: 0.029593, Val Loss: 0.018003
+2025-10-20 06:07:00,768 - INFO - [Epoch 108][Iter 295000] LR: 0.00000143, Train Loss: 0.016593, Val Loss: 0.017990
+2025-10-20 06:18:05,961 - INFO - [Epoch 108][Iter 296000] LR: 0.00000127, Train Loss: 0.007069, Val Loss: 0.017983
+2025-10-20 06:18:05,961 - INFO - Saving checkpoint...
+2025-10-20 06:20:50,495 - INFO - [Iter 296000] Val Loss: 0.017983, PSNR: 31.49, SSIM: 0.9161
+2025-10-20 06:31:56,541 - INFO - [Epoch 108][Iter 297000] LR: 0.00000115, Train Loss: 0.039292, Val Loss: 0.017981
+2025-10-20 06:43:01,893 - INFO - [Epoch 108][Iter 298000] LR: 0.00000107, Train Loss: 0.010258, Val Loss: 0.017982
+2025-10-20 06:54:07,370 - INFO - [Epoch 108][Iter 299000] LR: 0.00000102, Train Loss: 0.014641, Val Loss: 0.017979
+2025-10-20 07:05:12,737 - INFO - [Epoch 108][Iter 300000] LR: 0.00000100, Train Loss: 0.010447, Val Loss: 0.017978
+2025-10-20 07:05:12,738 - INFO - Saving checkpoint...
+2025-10-20 07:07:57,291 - INFO - [Iter 300000] Val Loss: 0.017978, PSNR: 31.49, SSIM: 0.9158
+2025-10-20 07:07:57,565 - INFO - Training completed in 2 days, 13:22:59
